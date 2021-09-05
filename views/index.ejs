@@ -1,0 +1,50 @@
+    <%- include('./partials/header') %> 
+    <title>Document</title>
+</head>
+<body class="d-flex flex-column vh-100">
+    <div class="container">
+        <h1 class="time"></h1>
+        <form id="my-form" action="/post-test" class="mt-5" method="POST">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="username">Username</label>
+                    <input required type="text" name="username" id="username" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="password">Password</label>
+                    <input required type="password" name="password" id="password" class="form-control">
+                </div>
+                <span class="mt-5 d-flex flex-column align-items-center">
+                    <div class="col">
+                        <button class="btn btn-dark px-5">Submit</button>
+                    </div>
+                </span>
+            </div>
+        </form>
+    </div>
+    <script>
+       setInterval(()=>{
+        const date = new Date()
+        let day = date.getDate()
+        let month = date.getMonth()
+        let year = date.getFullYear()
+        let hour = date.getHours()
+        let minute = date.getMinutes()
+        let secs = date.getSeconds()
+        let ind
+        let h,s
+        if(secs<10){
+            secs = '0' + secs
+        }
+        if(hour>12){
+            ind = "PM"
+            h = hour-12
+        }
+        else{
+            ind = "AM"
+        }
+        document.querySelector('.time').innerText = `${h}:${minute}:${secs} ${ind}`
+       },1000)
+    </script>
+</body>
+</html>
